@@ -1,0 +1,106 @@
+ <!-- 
+template variable #myform represents form in code driven side 
+-->   
+<h1>Product Form</h1>  
+<form #myform=ngForm 
+(ngSubmit)="myform.valid && register(myform)">
+
+ <!-- 
+template variable name(mentioned by #name) 
+represents formcontrol for the username field
+name.errors represents the validation errs 
+errors.required represents the validation errs for required
+name.errors.minlength
+cheking names.errors!=null because it will be null when there are no errs
+-->    
+<label>Product Id</label><br>
+<input name="productId"
+class="form-control" required minlength="2"
+     ngModel #Id="ngModel">
+
+<div *ngIf="Id.errors!=null && 
+Id.errors.required">
+productId is required.
+</div>
+
+<div *ngIf="Id.errors!=null &&
+Id.errors.minlength">
+minimum length should be 2
+</div>
+
+<br>
+<label>Product Name</label><br>
+<input name="productName"
+ class="form-control" required minlength="4"
+      ngModel #name="ngModel">
+ 
+<div *ngIf="name.errors!=null && 
+name.errors.required">
+Name is required.
+</div>
+
+<div *ngIf="name.errors!=null &&
+name.errors.minlength">
+ minimum length should be 4
+</div>
+
+<br>
+<label>Product Cost</label><br>
+<input name="productCost"
+ class="form-control" required minlength="2"
+      ngModel #cost="ngModel">
+ 
+<div *ngIf="cost.errors!=null && 
+cost.errors.required">
+product Cost is required.
+</div>
+
+<div *ngIf="cost.errors!=null &&
+cost.errors.minlength">
+ Cost can be more than 10 only..
+</div>
+
+
+      <div class="form-group" [class.has-error]="available.touched && available.invalid">
+      <br>
+      <label class="control-label" for="productOnline">Product Online</label><br>
+      <input type="radio" id="yes" name="available" required value="yes" class="form-control" ngModel #available="ngModel">
+      <label for="yes">yes</label>
+      <input type="radio" id="no" name="available" required value="no" class="form-control" ngModel #available="ngModel">
+      <label for="no">no</label><br>
+</div>
+<div>
+      <span class="help-block" *ngIf="available.touched && available.invalid">
+            Product Online Availability is Required!!
+      </span>
+</div>
+
+      <div>
+            <br>
+            <label for="productCategory">Product Category</label><br>
+            <select >
+              <option *ngFor="let Cat of productCategory"[value]="Cat">{{Cat}}</option>
+            </select>
+
+            
+       </div>
+
+    <br>
+    
+    <label for="availableInStore" >Available in store</label><br>
+    <input type="checkbox" id="store1"  value="BigBazar" name="BigBazar" class="form-control" ngModel #availableStore="ngModel">
+    <label for="BigBazar"> BigBazar</label>
+    <input type="checkbox" id="store2" name="Relience" value="Relience" class="form-control" ngModel #availableStore="ngModel">
+    <label for="Relience"> Relience</label>
+    <input type="checkbox" id="store3" name="DMart" value="DMart" class="form-control" ngModel #availableStore="ngModel">
+    <label for="DMart"> DMart</label>
+    <input type="checkbox" id="store4" name="MegaStore" value="MegaStore" class="form-control" ngModel #availableStore="ngModel">
+    <label for="MegaStore"> MegaStore</label>
+ <br> <br> 
+      <input type="submit" value="Add Product">
+</form>
+ 
+<div *ngIf="name.errors==null && myform.submitted" name="res">
+registered with {{username}}
+
+</div>

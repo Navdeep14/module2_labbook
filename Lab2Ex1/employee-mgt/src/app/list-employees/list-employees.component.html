@@ -1,0 +1,28 @@
+<h1>Listed Employees</h1>
+<table border="1">
+  <tr>
+    <th (click)="orderBy('empId')" class="link">Id </th>
+      <th (click)="orderBy('empName')" class="link"> Name </th>
+        <th (click)="orderBy('empSalary')" class="link"> Salary </th>
+          <th (click)="orderBy('empDepartment')" class="link">Department</th>
+            <th> Action</th>
+  </tr>
+ 
+
+<tr *ngFor="let emp of employees">
+    <td>{{emp.empId}}</td> 
+    <td>{{ emp.empName}}</td> 
+    <td>{{ emp.empSalary}}</td>
+    <td>{{ emp.empDepartment}}</td>
+    <td>
+      <button (click)="removeEmployeeById(emp.empId)">Remove</button>  
+    </td>   
+    <td>
+      <button (click)="updateEmployee(emp)">Update</button>  
+    </td>  
+    
+  </tr>
+
+ </table>
+ {{updatedResult}}
+ 

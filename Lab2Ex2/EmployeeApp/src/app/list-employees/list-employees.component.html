@@ -1,0 +1,28 @@
+<h1>Listed Employees</h1>
+<table border="1">
+    <tr>
+      <th (click)="orderBy('empId')" class="link">
+        Id
+      </th>
+      <th (click)="orderBy('empName')" class="link"> 
+        Name
+        </th>
+        <th (click)="orderBy('empSalary')" class="link"> 
+          Salary
+          </th>
+          <th (click)="orderBy('empDepartment')" class="link"> 
+            Department
+            </th>
+ </tr>
+ 
+
+<tr *ngFor="let emp of employees|ascend : orderByField">
+    <td>{{emp.empId}}</td> 
+    <td>{{ emp.empName}}</td> 
+    <td>{{ emp.empSalary}}</td>
+    <td>{{ emp.empDepartment}}</td>
+      
+  </tr>
+
+ </table>
+ 

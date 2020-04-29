@@ -1,0 +1,23 @@
+<form #data='ngForm' (ngSubmit)='addEmployee(data)'>
+    <div>
+      <label>Id</label>
+      <input name="id" ngModel type="number">
+    </div>
+    <div>
+      <label>Name</label>
+      <input name="name" ngModel type="text">
+    </div>
+    <div>
+      <label>Salary</label>
+      <input name="salary" ngModel type="number">
+    </div>
+    <div>
+      <label>Department</label>
+      <input name="department" ngModel type="text">
+    </div>
+    <input type="submit" value="Add Employee">
+  </form>
+
+  <div *ngIf="addedEmp!==null">  
+    {{addedEmp.empId}} {{addedEmp.empName}} {{addedEmp.empSalary}} {{addedEmp.empDepartment}}
+</div>
